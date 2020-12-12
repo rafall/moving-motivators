@@ -129,5 +129,8 @@
       }
     }
   },
-  "defaultProject": "moving-motivators"
+  "defaultProject": "moving-motivators",
+  "cli": {
+    "analytics": false
+  }
 }
