@@ -1,9 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import {CdkDragDrop, moveItemInArray} from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  // Need to remove view encapsulation so that the custom tooltip style defined in
+  // `tooltip-custom-class-example.css` will not be scoped to this component's view.
+  encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent {
   title = 'Moving-Motivators';
@@ -66,7 +69,4 @@ export class AppComponent {
     moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
   }
 
-  public showDescription(description: string) {
-    this.cardDescription = description;
-  }
 }

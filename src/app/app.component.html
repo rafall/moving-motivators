@@ -6,15 +6,12 @@
   </div>
   <div *ngIf="editOrder" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
     <div class="example-box" *ngFor="let card of cards" cdkDrag>
-      <img [src]="card.image" [alt]="card.alt" (mouseover)="showDescription(card.alt)" (mouseout)="showDescription('')">
+      <img [matTooltip]="card.alt" matTooltipClass="tooltip" [src]="card.image" [alt]="card.alt">
     </div>
   </div>
   <div *ngIf="!editOrder" class="example-list">
     <div class="example-box" cdkDragLockAxis="y" *ngFor="let card of cards" cdkDrag>
-      <img [src]="card.image" [alt]="card.alt" (mouseover)="showDescription(card.alt)" (mouseout)="showDescription('')">
+      <img [src]="card.image" [alt]="card.alt" [matTooltip]="card.alt" matTooltipClass="tooltip">
     </div>
   </div>
-</div>
-<div class="description">
-  <p>{{cardDescription}}</p>
 </div>
