@@ -69,4 +69,7 @@ export class AppComponent {
     moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
   }
 
+  public copyOrder() {
+    return this.cards.map(card => card.name).join('\t')
+  }
 }
