@@ -1,12 +1,13 @@
-  <mat-toolbar color="primary">
-    <span>{{title}}</span>
-  </mat-toolbar>
+<mat-toolbar color="primary">
+  <span>{{title}}</span>
+</mat-toolbar>
+
 <div class="boundary">
   <h2 class="mode">
     Mode: {{ editOrder ? 'Change order' : 'Move up and down'}}
   </h2>
   <div class="less-more">
-    <span><- MOST IMPORTANT</span><span>LESS IMPORTANT -></span>
+    <span><-------- MOST IMPORTANT</span><span>LESS IMPORTANT --------></span>
   </div>
   <div *ngIf="editOrder" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
     <div class="example-box change-order" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
@@ -18,5 +19,5 @@
       <img [src]="card.image" [alt]="card.alt" [matTooltip]="card.alt" matTooltipClass="tooltip">
     </div>
   </div>
+  <button mat-raised-button color="primary" (click)="editOrder = !editOrder">change mode</button>
 </div>
-<button mat-raised-button color="primary" (click)="editOrder = !editOrder">change mode</button>
