@@ -2,3 +2,19 @@
 
 html, body { height: 100%; }
 body { font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+mat-button-toggle-group {
+  margin-left: 12px;
+}
+
+.mat-button-toggle {
+  min-width: 160px;
+}
+
+.mat-button-toggle-checked {
+  background-color: #3f51b5;
+}
+
+.mat-button-toggle-checked.mat-button-toggle-appearance-standard {
+  color: white;
+}

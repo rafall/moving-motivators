@@ -13,12 +13,12 @@
   </div>
   <div *ngIf="editOrder" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
     <div class="example-box change-order" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
-      <img [matTooltip]="card.alt" matTooltipClass="tooltip" [src]="card.image" [alt]="card.alt">
+      <img class="card-image" [matTooltip]="card.alt" matTooltipClass="tooltip" [src]="card.image" [alt]="card.alt">
     </div>
   </div>
   <div *ngIf="!editOrder" class="example-list">
     <div class="example-box up-and-down" cdkDragLockAxis="y" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
-      <img [src]="card.image" [alt]="card.alt" [matTooltip]="card.alt" matTooltipClass="tooltip">
+      <img class="card-image" [src]="card.image" [alt]="card.alt" [matTooltip]="card.alt" matTooltipClass="tooltip">
     </div>
   </div>
 </div>
