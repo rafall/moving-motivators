@@ -7,6 +7,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatSliderModule,
     DragDropModule,
     MatTooltipModule,
+    MatToolbarModule,
+    MatButtonModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
