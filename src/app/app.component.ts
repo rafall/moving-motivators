@@ -16,52 +16,52 @@ export class AppComponent {
     {
       name: 'Aceitação',
       image: 'assets/acceptance.png',
-      alt: 'The people around me approve of what I do and who I am.',
+      alt: 'As pessoas ao meu redor aprovam o que eu faço e quem eu sou',
     },
     {
       name: 'Curiosidade',
       image: 'assets/curiosity.png',
-      alt: 'I have plenty of things to investigate and to think about',
+      alt: 'Eu tenho muitas coisas para investigar e pensar',
     },
     {
       name: 'Liberdade',
       image: 'assets/freedom.png',
-      alt: 'I am independent of others with my work and my responsibilities.',
+      alt: 'Eu sou independente dos outros com meu próprio trabalho e responsabilidades',
     },
     {
       name: 'Status',
       image: 'assets/status.png',
-      alt: 'My position is good, and recognized by the people who work with me.',
+      alt: 'Minha posição é boa e reconhecida pelas outras pessoas com as quais eu trabalho',
     },
     {
       name: 'Meta',
       image: 'assets/goal.png',
-      alt: 'My purpose in life is reflected in the work that I do.',
+      alt: 'Meu propósito na vida é refletido no trabalho que eu faço',
     },
     {
       name: 'Honra',
       image: 'assets/honor.png',
-      alt: 'I feel proud that my personal values are reflected in how I work.',
+      alt: 'Eu sinto orgulho por meus valores pessoais serem refletidos em como eu trabalho',
     },
     {
       name: 'Maestria',
       image: 'assets/mastery.png',
-      alt: 'My work challenges my competence but it is still within my abilities.',
+      alt: 'Meu trabalho desafia minha competência, mas ainda está dentro das minhas habilidades',
     },
     {
       name: 'Ordem',
       image: 'assets/order.png',
-      alt: 'There are enough rules and policies for a stable environment.',
+      alt: 'Existem regras e políticas o suficiente para um ambiente estável',
     },
     {
       name: 'Poder',
       image: 'assets/power.png',
-      alt: 'There’s enough room for me to influence what happens around me.',
+      alt: 'Há espaço o suficiente para que eu influencie o que está acontecendo em torno de mim',
     },
     {
       name: 'Relação',
       image: 'assets/relatedness.png',
-      alt: 'I have good social contacts with the people in my work.',
+      alt: 'Eu tenho bons contatos sociais com as pessoas dentro e em torno do meu trabalho',
     },
   ];
 

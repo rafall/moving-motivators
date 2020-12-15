@@ -1,13 +1,15 @@
 <mat-toolbar color="primary">
   <span>{{title}}</span>
 </mat-toolbar>
-
+<div class="toggle">
+  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+    <mat-button-toggle value="horizontal" checked="true" (click)="editOrder = true">Mudar ordem</mat-button-toggle>
+    <mat-button-toggle value="vertical" (click)="editOrder = false">Mover verticalmente</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
 <div class="boundary">
-  <h2 class="mode">
-    Mode: {{ editOrder ? 'Change order' : 'Move up and down'}}
-  </h2>
   <div class="less-more">
-    <span><-------- MOST IMPORTANT</span><span>LESS IMPORTANT --------></span>
+    <span><-------- MAIS IMPORTANTE</span><span>MENOS IMPORTANTE --------></span>
   </div>
   <div *ngIf="editOrder" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
     <div class="example-box change-order" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
@@ -19,5 +21,4 @@
       <img [src]="card.image" [alt]="card.alt" [matTooltip]="card.alt" matTooltipClass="tooltip">
     </div>
   </div>
-  <button mat-raised-button color="primary" (click)="editOrder = !editOrder">change mode</button>
 </div>
