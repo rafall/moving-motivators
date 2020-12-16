@@ -1,14 +1,26 @@
+.main-container {
+  width: 2000px;
+  margin: auto;
+}
+
+.clipboard-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .less-more {
   display: flex;
   justify-content: space-between;
-  width: 2000px;
-  margin: auto;
   margin-top: 30px;
 }
 
 .toggle {
   text-align: center;
   margin-top: 30px;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
 }
 
 .card-image {
@@ -18,14 +30,14 @@
 .boundary {
   width: 100%;
   height: 600px;
-  width: 2000px;
-  margin: auto;
-  border-top: 2px dotted #ccc;
-  border-bottom: 2px dotted #ccc;
 }
 
 #clipboard-button {
   margin-top: 30px;
+}
+
+#info {
+  text-align: center;
 }
 
 .example-list {
@@ -99,10 +111,9 @@
 
   .boundary {
     height: 450px;
-    width: 1500px;
   }
 
-  .less-more {
+  .main-container {
     width: 1500px;
   }
 }
@@ -119,9 +130,8 @@
 
   .boundary {
     height: 360px;
-    width: 1200px;
   }
-  .less-more {
+  .main-container {
     width: 1200px;
   }
 }
