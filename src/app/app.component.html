@@ -7,10 +7,10 @@
     <mat-button-toggle value="vertical" (click)="editOrder = false">Mover verticalmente</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
+<div class="less-more">
+  <span><i class="fas fa-long-arrow-alt-left"></i> MAIS IMPORTANTE</span><span>MENOS IMPORTANTE <i class="fas fa-long-arrow-alt-right"></i></span>
+</div>
 <div class="boundary">
-  <div class="less-more">
-    <span><-------- MAIS IMPORTANTE</span><span>MENOS IMPORTANTE --------></span>
-  </div>
   <div *ngIf="editOrder" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
     <div class="example-box change-order" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
       <img class="card-image" [matTooltip]="card.alt" matTooltipClass="tooltip" [src]="card.image" [alt]="card.alt">
@@ -22,4 +22,4 @@
     </div>
   </div>
 </div>
-<button mat-raised-button color="primary" [cdkCopyToClipboard]="copyOrder()" matTooltip="Você pode copiar ordem em tabela, e colar em um Excel, Google Sheets, etc...">Copiar ordem em tabela</button>
+<button mat-raised-button id="clipboard-button" color="primary" [cdkCopyToClipboard]="copyOrder()" matTooltip="Você pode copiar ordem em tabela, e colar em um Excel, Google Sheets, etc...">Copiar ordem em tabela</button>
