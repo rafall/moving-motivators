@@ -40,7 +40,7 @@
 </div>
 
 <div class="main-container clipboard-container">
-  <button mat-raised-button id="clipboard-button" color="primary" [cdkCopyToClipboard]="copyData" matTooltip="Você pode copiar ordem em tabela, e colar em um Excel, Google Sheets, etc..."><i class="far fa-copy"></i></button>
+  <button mat-raised-button id="clipboard-button" color="primary" (click)="copyToClipboard()" matTooltip="Você pode copiar ordem em tabela, e colar em um Excel, Google Sheets, etc..."><i class="far fa-copy"></i></button>
 </div>
 
 <h3 id="info"><i class="fas fa-info-circle"></i> Ordene as cartas de acordo com a importância de cada elemento para você</h3>

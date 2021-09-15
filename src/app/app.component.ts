@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CdkDragDrop, CdkDragEnd, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MovingMotivator } from './movingmotivators.model';
+import { Clipboard } from '@angular/cdk/clipboard';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,13 +10,14 @@ import { MovingMotivator } from './movingmotivators.model';
   // `tooltip-custom-class-example.css` will not be scoped to this component's view.
   encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Moving Motivators';
   cardDescription = '';
   editOrder = true;
 
-  copyData = '';
   priorityMax = 120;
+  priorityCopyLevels = 5;
+  priorityLevelSize = (this.priorityMax * 2) / this.priorityCopyLevels;
 
   cards: MovingMotivator[] = [
     {
@@ -80,17 +82,28 @@ export class AppComponent implements OnInit {
     },
   ];
 
-  ngOnInit(): void {
-    this.prepareCopyData();
-  }
+  constructor(
+    private clipboard: Clipboard,
+  ) { }
 
   public drop(event: CdkDragDrop<string[]>): void {
     moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
-    this.prepareCopyData();
   }
 
-  public prepareCopyData(): void {
-    this.copyData = this.cards.map(card => card.name).join('\t');
+  public copyToClipboard(): void {
+    const copyMatrix = Array(this.priorityCopyLevels);
+    for (let i = 0; i < this.priorityCopyLevels; i++) { copyMatrix[i] = Array(this.cards.length); }
+
+    this.cards.forEach((card, columnIndex) => {
+      let lineIndex = Math.floor((card.priority + this.priorityMax) / this.priorityLevelSize);
+      if (lineIndex === copyMatrix.length) { lineIndex--; }
+
+      copyMatrix[lineIndex][columnIndex] = card.name;
+    });
+
+    const joinedLines = copyMatrix.map(line => line.join('\t'));
+    const copyData = joinedLines.join('\n');
+    this.clipboard.copy(copyData);
   }
 
   public startPriority(): void {
