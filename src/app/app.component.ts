@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 @Component({
   selector: 'app-root',
@@ -8,10 +8,13 @@ import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
   // `tooltip-custom-class-example.css` will not be scoped to this component's view.
   encapsulation: ViewEncapsulation.None,
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Moving-Motivators';
   cardDescription = '';
   editOrder = true;
+
+  copyData = '';
+
   cards = [
     {
       name: 'Aceitação',
@@ -65,11 +68,16 @@ export class AppComponent {
     },
   ];
 
-  public drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
+  ngOnInit(): void {
+    this.prepareCopyData();
   }
 
-  public copyOrder() {
-    return this.cards.map(card => card.name).join('\t')
+  public drop(event: CdkDragDrop<string[]>): void {
+    moveItemInArray(this.cards, event.previousIndex, event.currentIndex);
+    this.prepareCopyData();
+  }
+
+  public prepareCopyData(): void {
+    this.copyData = this.cards.map(card => card.name).join('\t');
   }
 }
