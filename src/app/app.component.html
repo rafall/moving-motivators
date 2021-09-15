@@ -3,28 +3,44 @@
   <span class="example-spacer"></span>
   <img src="assets/tokenlab_logo.png" alt="">
 </mat-toolbar>
+
 <div class="toggle">
-  <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+  <mat-button-toggle-group name="orderDirection" aria-label="Direção da ordenação">
     <mat-button-toggle value="horizontal" checked="true" (click)="editOrder = true">Mudar ordem</mat-button-toggle>
-    <mat-button-toggle value="vertical" (click)="editOrder = false">Mover verticalmente</mat-button-toggle>
+    <mat-button-toggle value="vertical" (click)="startPriority()">Mover verticalmente</mat-button-toggle>
   </mat-button-toggle-group>
 </div>
+
 <div class="less-more main-container">
   <span><i class="fas fa-long-arrow-alt-left"></i> MAIS IMPORTANTE</span><span>MENOS IMPORTANTE <i class="fas fa-long-arrow-alt-right"></i></span>
 </div>
+
 <div class="boundary main-container">
+  <!-- mover horizontalmente -->
   <div *ngIf="editOrder" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
     <div class="example-box change-order" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
       <img class="card-image" [matTooltip]="card.alt" matTooltipClass="tooltip" [src]="card.image" [alt]="card.alt">
     </div>
   </div>
+
+  <!-- mover verticalmente -->
   <div *ngIf="!editOrder" class="example-list">
-    <div class="example-box up-and-down" cdkDragLockAxis="y" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
+    <div
+      *ngFor="let card of cards; let i = index"
+      [id]="'vertical' + i"
+      class="example-box up-and-down"
+      cdkDrag
+      cdkDragLockAxis="y"
+      cdkDragBoundary=".example-list"
+      (cdkDragEnded)="changePriority($event)"
+    >
       <img class="card-image" [src]="card.image" [alt]="card.alt" [matTooltip]="card.alt" matTooltipClass="tooltip">
     </div>
   </div>
 </div>
+
 <div class="main-container clipboard-container">
   <button mat-raised-button id="clipboard-button" color="primary" [cdkCopyToClipboard]="copyData" matTooltip="Você pode copiar ordem em tabela, e colar em um Excel, Google Sheets, etc..."><i class="far fa-copy"></i></button>
 </div>
+
 <h3 id="info"><i class="fas fa-info-circle"></i> Ordene as cartas de acordo com a importância de cada elemento para você</h3>
