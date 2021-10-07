@@ -11,32 +11,41 @@
   </mat-button-toggle-group>
 </div>
 
-<div class="less-more main-container">
-  <span><i class="fas fa-long-arrow-alt-left"></i> MAIS IMPORTANTE</span><span>MENOS IMPORTANTE <i class="fas fa-long-arrow-alt-right"></i></span>
-</div>
+<div class="main-container">
+  <div class="less-more-vertical">
+    <span><i class="fas fa-long-arrow-alt-up"></i> Mais motivado</span><span><i class="fas fa-long-arrow-alt-down"></i> Menos motivado</span>
+  </div>
 
-<div class="boundary main-container">
-  <!-- mover horizontalmente -->
-  <div *ngIf="editOrder" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
-    <div class="example-box change-order" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
-      <img class="card-image" [matTooltip]="card.alt" matTooltipClass="tooltip" [src]="card.image" [alt]="card.alt">
+  <div>
+    <div class="less-more-horizontal">
+      <span><i class="fas fa-long-arrow-alt-left"></i> Mais importante</span><span>Menos importante <i class="fas fa-long-arrow-alt-right"></i></span>
+    </div>
+
+    <div class="boundary">
+      <!-- mover horizontalmente -->
+      <div *ngIf="editOrder" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box change-order" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
+          <img class="card-image" [matTooltip]="card.alt" matTooltipClass="tooltip" [src]="card.image" [alt]="card.alt">
+        </div>
+      </div>
+
+      <!-- mover verticalmente -->
+      <div *ngIf="!editOrder" class="example-list">
+        <div
+          *ngFor="let card of cards; let i = index"
+          [id]="'vertical' + i"
+          class="example-box up-and-down"
+          cdkDrag
+          cdkDragLockAxis="y"
+          cdkDragBoundary=".example-list"
+          (cdkDragEnded)="changePriority($event)"
+        >
+          <img class="card-image" [src]="card.image" [alt]="card.alt" [matTooltip]="card.alt" matTooltipClass="tooltip">
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- mover verticalmente -->
-  <div *ngIf="!editOrder" class="example-list">
-    <div
-      *ngFor="let card of cards; let i = index"
-      [id]="'vertical' + i"
-      class="example-box up-and-down"
-      cdkDrag
-      cdkDragLockAxis="y"
-      cdkDragBoundary=".example-list"
-      (cdkDragEnded)="changePriority($event)"
-    >
-      <img class="card-image" [src]="card.image" [alt]="card.alt" [matTooltip]="card.alt" matTooltipClass="tooltip">
-    </div>
-  </div>
 </div>
 
 <div class="main-container clipboard-container">
