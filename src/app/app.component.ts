@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { CdkDragDrop, CdkDragEnd, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MovingMotivator } from './movingmotivators.model';
 import { Clipboard } from '@angular/cdk/clipboard';
@@ -18,6 +18,8 @@ export class AppComponent {
   priorityMax = 120;
   priorityCopyLevels = 5;
   priorityLevelSize = (this.priorityMax * 2) / this.priorityCopyLevels;
+  importanceTip = 'Ordene as cartas de acordo com a importância de cada elemento para você';
+  satisfactionTip = 'Alinhe as cartas de acordo com sua motivação'
 
   cards: MovingMotivator[] = [
     {

@@ -23,14 +23,14 @@
 
     <div class="boundary">
       <!-- mover horizontalmente -->
-      <div *ngIf="editOrder" cdkDropList cdkDropListOrientation="horizontal" class="example-list" (cdkDropListDropped)="drop($event)">
+      <div cdkDropList cdkDropListOrientation="horizontal" class="example-list" [ngClass]="{ 'hidden': !editOrder }" (cdkDropListDropped)="drop($event)">
         <div class="example-box change-order" *ngFor="let card of cards" cdkDragBoundary=".example-list" cdkDrag>
           <img class="card-image" [matTooltip]="card.alt" matTooltipClass="tooltip" [src]="card.image" [alt]="card.alt">
         </div>
       </div>
 
       <!-- mover verticalmente -->
-      <div *ngIf="!editOrder" class="example-list">
+      <div class="example-list" [ngClass]="{ 'hidden': editOrder }">
         <div
           *ngFor="let card of cards; let i = index"
           [id]="'vertical' + i"
@@ -51,5 +51,4 @@
 <div class="main-container clipboard-container">
   <button mat-raised-button id="clipboard-button" color="primary" (click)="copyToClipboard()" matTooltip="Você pode copiar ordem em tabela, e colar em um Excel, Google Sheets, etc..."><i class="far fa-copy"></i></button>
 </div>
-
-<h3 id="info"><i class="fas fa-info-circle"></i> Ordene as cartas de acordo com a importância de cada elemento para você</h3>
+<h3 id="info"><i class="fas fa-info-circle"></i> {{ editOrder ? importanceTip : satisfactionTip }}</h3>

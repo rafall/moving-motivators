@@ -1,7 +1,8 @@
 .main-container {
-  width: 2100px;
+  width: 100%;
   margin: auto;
   display: flex;
+  justify-content: center;
 }
 
 .clipboard-container {
@@ -35,14 +36,24 @@
 }
 
 .card-image {
-  width: 200px;
+  width: 120px;
+}
+
+.example-box {
+  height: 120px;
+  box-sizing: border-box;
+  background: white;
+  font-size: 14px;
+  flex-basis: 0;
+  box-shadow: 0 10px 6px -6px #777;
+  z-index: 1;
 }
 
 .boundary {
   width: 100%;
   height: 600px;
 
-  background-image: url("/assets/vertical-scale.svg");
+  background-image: url("/assets/grade_500px.svg");
   background-size: cover;
 }
 
@@ -64,14 +75,8 @@
   overflow-x: auto;
 }
 
-.example-box {
-  height: 200px;
-  box-sizing: border-box;
-  background: white;
-  font-size: 14px;
-  flex-basis: 0;
-  box-shadow: 0 10px 6px -6px #777;
-  z-index: 1;
+.example-list.hidden {
+  display: none;
 }
 
 .change-order {
@@ -87,8 +92,13 @@
   border: 0;
   .card-image {
     opacity: 0.9;
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
+    transform: translate(-50px);
+  }
+  .example-box {
+    height: 200px;
+    width: 200px;
   }
 }
 
@@ -115,36 +125,16 @@
 @media (max-width: 2000px)
 {
   .card-image {
-    width: 150px;
+    width: 100px;
   }
 
   .example-box {
-    height: 150px;
+    height: 100px;
   }
 
   .boundary {
-    height: 450px;
+    height: 600px;
   }
 
-  .main-container {
-    width: 1600px;
-  }
 }
 
-@media (max-width: 1500px)
-{
-  .card-image {
-    width: 120px;
-  }
-
-  .example-box {
-    height: 120px;
-  }
-
-  .boundary {
-    height: 360px;
-  }
-  .main-container {
-    width: 1300px;
-  }
-}
